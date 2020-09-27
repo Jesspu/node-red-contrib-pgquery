@@ -1,4 +1,10 @@
 # node-red-contrib-postgrestor
+THIS IS A FORK. 
+
+The current upstream repo seems to be abandoned, and I am using this for my own setup. I will be making chagnes and updates and documenting them here. I will also be 
+publishing this as a npm package if others would like to use it. Feel free to submit pull request. 
+~Jess Patton
+
 Postgrestor :space_invader: is a [**Node-RED**](http://nodered.org/) node allowing basic access to [**Postgres**](https://www.postgresql.org/) :elephant: database.
 
 Postgrestor sets up a console to execute queries against the configured database.
