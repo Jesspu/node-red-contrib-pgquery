@@ -1,14 +1,14 @@
 # node-red-contrib-pgquery
 
 ## Disclaimer
-THIS IS A FORK AND WIP - forked from [here](https://github.com/HySoaKa/node-red-contrib-postgrestor). Currently, a work in progress, will cut a 1.0.0 release and npm package when it is ready. 
+THIS IS A FORK AND WIP rewrite - forked from [here](https://github.com/HySoaKa/node-red-contrib-postgrestor). Currently, a work in progress, will cut a 1.0.0 release and npm package when it is ready. 
 
 The current upstream repo seems to be abandoned, and I am using this for my own setup. I will be making changes and updates and documenting them here. I will also be 
 publishing this as a npm package if others would like to use it. Feel free to submit pull request. 
 
 ~Jess Patton
 
-## Current Changes
+## Current Changes - on branch rework
 1. Updated packages pg and mustache to the latest versions, removed co.
 2. Now uses async/await instead of co.
 3. Rewrote query node to use simplified async flow.
