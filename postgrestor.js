@@ -6,6 +6,11 @@ module.exports = function(RED) {
 
   let pgPool = null;
 
+  /**
+   * Define the postgres db node, and override Pool class
+   * @param n
+   * @constructor
+   */
   function PostgresDBNode(n) {
     let poolInstance = null;
     const node = this;
@@ -43,6 +48,9 @@ module.exports = function(RED) {
     pgPool = new Pool();
   }
 
+  /**
+   * Register the postgres DB Node
+   */
   RED.nodes.registerType('postgresDB', PostgresDBNode, {
     credentials: {
       user: {type: 'text'},
@@ -50,6 +58,11 @@ module.exports = function(RED) {
     }
   });
 
+  /**
+   * Define the postgrestor query node
+   * @param config
+   * @constructor
+   */
   function PostgrestorNode(config) {
     const node = this;
 
@@ -57,34 +70,29 @@ module.exports = function(RED) {
     node.topic = config.topic;
     node.config = RED.nodes.getNode(config.postgresDB);
 
-    node.on('input', function(msg) {
-      const template = {
-        msg: msg
-      };
-      co(
-        function* () {
-          let client = yield pgPool
-            .connect()
-            .catch((error) => {
-            node.error(error, msg);
-            });
-          try {
-            msg.payload = yield client.query(
-              mustache.render(config.query, template)
-            );
-            node.send(msg);
-            client.release();
-          } catch (error) {
-            node.error(error, msg);
-            client.release();
-          }
-        }
-      );
+    node.on('input', async function(msg) {
+      let client;
+      try {
+        const template = {
+          msg: msg
+        };
+        client = await pgPool.connect();
+        msg.payload = await client.query(config.query, template);
+        node.send(msg);
+        client.release();
+      } catch (error) {
+        node.error(error, msg)
+        if(client) client.release();
+      }
     });
 
     node.on('close', function() {
       node.status({});
     });
   }
+
+  /**
+   * Register the postgrestor query node
+   */
   RED.nodes.registerType('postgrestor', PostgrestorNode);
 };

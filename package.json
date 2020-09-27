@@ -4,15 +4,14 @@
   "scripts": {
     "test": "eslint postgrestor.js"
   },
-  "description": "Yet another Node-RED node to query PostgreSQL",
+  "description": "Query postgres from node red. Uses mustache templating to build query strings",
   "author": {
-    "name": "Hamza Jalouaja",
-    "email": "hamzajalouaja@gmail.com"
+    "name": "Jess Patton",
+    "email": "jesspatton@jesspatton.com"
   },
   "dependencies": {
-    "co": "^4.6.0",
-    "mustache": "^2.3.0",
-    "pg": "^6.1.5"
+    "mustache": "^4.0.1",
+    "pg": "^8.3.3"
   },
   "license": "Apache",
   "repository": {
