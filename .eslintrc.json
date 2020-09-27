@@ -5,7 +5,13 @@
     "node": true,
     "es6": true
   },
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
   "rules": {
+    "max-len": ["warn", {
+      "code": 160
+    }],
     "require-jsdoc": ["error", {
       "require": {
         "FunctionDeclaration": false,

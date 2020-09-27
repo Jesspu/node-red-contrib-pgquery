@@ -1,8 +1,8 @@
 {
-  "name": "postgrestor",
-  "version": "0.0.3",
+  "name": "pgquery",
+  "version": "1.0.0",
   "scripts": {
-    "test": "eslint postgrestor.js"
+    "test": "eslint pgquery.js"
   },
   "description": "Query postgres from node red. Uses mustache templating to build query strings",
   "author": {
@@ -16,7 +16,7 @@
   "license": "Apache",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HySoaKa/node-red-contrib-postgrestor"
+    "url": "https://github.com/Jesspu/node-red-contrib-postgrestor"
   },
   "keywords": [
     "node-red",
