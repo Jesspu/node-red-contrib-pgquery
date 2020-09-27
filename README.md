@@ -13,6 +13,7 @@ These are issues I ran into and could not find easy documentation about. I will 
 but for now, here are some work arounds.
 
 **INSERTS**:
+
   Take this insert for example. 
   
   ```sql 
