@@ -1,4 +1,4 @@
-# node-red-contrib-postgrestor
+# node-red-contrib-pgquery
 
 ## Disclaimer
 THIS IS A FORK AND WIP - forked from [here](https://github.com/HySoaKa/node-red-contrib-postgrestor). Currently, a work in progress, will cut a 1.0.0 release and npm package when it is ready. 
