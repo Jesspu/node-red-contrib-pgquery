@@ -11,6 +11,7 @@ publishing this as a npm package if others would like to use it. Feel free to su
 ## Issues I ran into, and ways to fix them. 
 These are issues I ran into and could not find easy documentation about. I will also be trying to update to code to handle some of these situations better in the future,
 but for now, here are some work arounds.
+
 **INSERTS**:
   Take this insert for example. 
   
