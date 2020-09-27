@@ -66,7 +66,7 @@ module.exports = function(RED) {
           let client = yield pgPool
             .connect()
             .catch((error) => {
-            node.error(error);
+            node.error(error, msg);
             });
           try {
             msg.payload = yield client.query(
@@ -75,7 +75,7 @@ module.exports = function(RED) {
             node.send(msg);
             client.release();
           } catch (error) {
-            node.error(error);
+            node.error(error, msg);
             client.release();
           }
         }
