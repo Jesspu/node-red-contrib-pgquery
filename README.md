@@ -14,7 +14,9 @@ but for now, here are some work arounds.
 **INSERTS**:
   Take this insert for example. 
   
-  ```INSERT INTO public.baby_events ("createdAt", event_id, description) VALUES (now() at time zone 'utc', {{msg.payload.event_id}}, '{{msg.payload.description}}')```
+  ```sql 
+  INSERT INTO public.baby_events ("createdAt", event_id, description) VALUES (now() at time zone 'utc', {{msg.payload.event_id}}, '{{msg.payload.description}}')
+  ```
   
   When doing an insert, or even a select using postgrestor, there are some columns and values that need massaging to get to work as expected. 
   1) When a value being inserted is a string, or type text, you have to surround it with ```'```, otherwise it will be passed in with ```"``` and be treated as a 
