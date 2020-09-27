@@ -1,5 +1,5 @@
 {
-  "name": "pgquery",
+  "name": "@jxpatto/pgquery",
   "version": "1.0.0",
   "scripts": {
     "test": "eslint pgquery.js"
