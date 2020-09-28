@@ -11,9 +11,8 @@ module.exports = function(RED) {
      * @constructor
      */
     function PostgresDBNode(n) {
+        const node = this;
         try {
-            const node = this;
-
             // Check and assign PG credentials
             if (node.credentials) {
                 const {user, password} = node.credentials;

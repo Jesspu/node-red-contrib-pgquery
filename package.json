@@ -25,7 +25,7 @@
   ],
   "node-red": {
     "nodes": {
-      "postgrestor": "postgrestor.js"
+      "postgrestor": "pgquery.js"
     }
   },
   "devDependencies": {
