@@ -1,7 +1,7 @@
 # node-red-contrib-pgquery
 
 ## Disclaimer
-THIS IS A FORK AND WIP rewrite - forked from [here](https://github.com/HySoaKa/node-red-contrib-postgrestor). Currently, a work in progress, will cut a 1.0.0 release and npm package when it is ready. 
+THIS IS A FORK AND WIP REWRITE - forked from [here](https://github.com/HySoaKa/node-red-contrib-postgrestor). Currently, a work in progress, will cut a 1.0.0 release and npm package when it is ready. 
 
 The current upstream repo seems to be abandoned, and I am using this for my own setup. I will be making changes and updates and documenting them here. I will also be 
 publishing this as a npm package if others would like to use it. Feel free to submit pull request. 
@@ -13,6 +13,9 @@ publishing this as a npm package if others would like to use it. Feel free to su
 2. Now uses async/await instead of co.
 3. Rewrote query node to use simplified async flow.
 4. Rewrote configuration node to use new pg 8 syntax.
+5. Rename to pgQuery
+6. Allow errors to propagate up, so they can be handled by the catch node
+7. Add some warnings if pg username or password is missing from config
 
 ## Issues I ran into, and ways to fix them. 
 These are issues I ran into and could not find  documentation about. I will also be trying to update to code to handle some of these situations better in the future,
