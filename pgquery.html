@@ -5,10 +5,10 @@
     <input type="text" id="node-config-input-name" placeholder="name">
   </div>
   <div class="form-row">
-    <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="postgrestor-config-tabs"></ul>
+    <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="pgquery-config-tabs"></ul>
   </div>
-  <div id="postgrestor-config-tabs-content" style="min-height: 170px;">
-    <div id="postgrestor-config-tab-connection" style="display: none;">
+  <div id="pgquery-config-tabs-content" style="min-height: 170px;">
+    <div id="pgquery-config-tab-connection" style="display: none;">
       <div class="form-row">
         <label for="node-config-input-host"><i class="fa fa-server"></i> <span>Host</span></label>
         <input class="input-append-left" type="text" id="node-config-input-host" placeholder="localhost" style="width: 40%;">
@@ -24,7 +24,7 @@
         <label for="node-config-input-ssl" style="width: auto;"> <span>SSL</span></label>
       </div>
     </div>
-    <div id="postgrestor-config-tab-security" style="display: none;">
+    <div id="pgquery-config-tab-security" style="display: none;">
       <div class="form-row">
         <label for="node-config-input-user"><i class="fa fa-user"></i> <span>User</span></label>
         <input type="text" id="node-config-input-user" placeholder="postgres">
@@ -34,7 +34,7 @@
         <input type="password" id="node-config-input-password" placeholder="postgres">
       </div>
     </div>
-    <div id="postgrestor-config-tab-pool" style="display: none;">
+    <div id="pgquery-config-tab-pool" style="display: none;">
       <div class="form-row">
         <label title="Maximum number of physical database connections that this connection pool can contain." for="node-config-input-max" style="width: 150px;"><i class="fa fa-thermometer-full"></i> <span>Maximum size</span></label>
         <input type="text" id="node-config-input-max" placeholder="10">
@@ -102,28 +102,28 @@ RED.nodes.registerType('postgresDB', {
   },
   oneditprepare: function() {
     const tabs = RED.tabs.create({
-      id: "postgrestor-config-tabs",
+      id: "pgquery-config-tabs",
       onchange: function(tab) {
-        $("#postgrestor-config-tabs-content").children().hide();
+        $("#pgquery-config-tabs-content").children().hide();
         $("#" + tab.id).show();
       }
     });
     tabs.addTab({
-      id: "postgrestor-config-tab-connection",
+      id: "pgquery-config-tab-connection",
       label: "Connection"
     });
     tabs.addTab({
-      id: "postgrestor-config-tab-security",
+      id: "pgquery-config-tab-security",
       label: "Security"
     });
     tabs.addTab({
-      id: "postgrestor-config-tab-pool",
+      id: "pgquery-config-tab-pool",
       label: "Pool"
     });
   }
 });
 </script>
-<script type="text/x-red" data-template-name="postgrestor">
+<script type="text/x-red" data-template-name="pgquery">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> <span>Name</span></label>
     <input type="text" id="node-input-name" placeholder="name"> </div>
@@ -143,7 +143,7 @@ RED.nodes.registerType('postgresDB', {
   </div>
 </script>
 <script type="text/javascript">
-RED.nodes.registerType("postgrestor", {
+RED.nodes.registerType("pgquery", {
   category: "storage",
   color: '#336791',
   defaults: {
@@ -168,7 +168,7 @@ RED.nodes.registerType("postgrestor", {
   icon: "postgres.png",
   align: "left",
   label: function() {
-    return this.name || "postgrestor";
+    return this.name || "pgquery";
   },
   labelStyle: function() {
     return this.name ? "node_label_italic" : "";
@@ -188,9 +188,9 @@ RED.nodes.registerType("postgrestor", {
   }
 });
 </script>
-<script type="text/x-red" data-help-name="postgrestor">
-  <p>Postgrestor 👾 is a Node-RED node allowing basic access to Postgres 🐘 database.</p>
-  <p>Postgrestor sets up a console to execute queries against the configured database.
+<script type="text/x-red" data-help-name="pgquery">
+  <p>pgQuery is a Node-RED node allowing basic access to Postgres database.</p>
+  <p>pgQuery sets up a console to execute queries against the configured database.
   </p>
   <p><code>msg.payload</code> will contain the result object of the query. It has the following properties:
   </p>
@@ -200,7 +200,7 @@ RED.nodes.registerType("postgrestor", {
     <li> <i>oid</i>: The oid returned</li>
     <li> <i>rows</i>: An array of rows</li>
   </ul>
-  <p>Postgres implements a template engine allowing parameterized queries:</p>
+  <p>pgQuery implements a template engine allowing parameterized queries:</p>
   <pre>
   /* INTEGER id COLUMN */
   SELECT *

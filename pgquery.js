@@ -1,12 +1,11 @@
 module.exports = function(RED) {
     'use strict';
     const mustache = require('mustache');
-    // const PgPool = require('pg').Pool;
     const {Pool} = require('pg');
     let pgPool = null;
 
     /**
-     * Define the postgres db node, and override Pool class
+     * Define the pgquery db node
      * @param {Object} n
      * @constructor
      */
@@ -59,44 +58,6 @@ module.exports = function(RED) {
         } catch (error) {
             node.error(error, n);
         }
-
-
-        // let poolInstance = null;
-        // const node = this;
-
-        // RED.nodes.createNode(this, n);
-
-        // node.name = n.name;
-        // node.host = n.host;
-        // node.port = n.port;
-        // node.database = n.database;
-        // node.ssl = n.ssl;
-
-        // if (node.credentials) {
-        //  node.user = node.credentials.user;
-        //  node.password = node.credentials.password;
-        // }
-
-        // class Pool extends PgPool {
-        //  constructor() {
-        //    if (!poolInstance) {
-        //      super({
-        //        user: node.user,
-        //        password: node.password,
-        //        host: node.host,
-        //        port: node.port,
-        //        database: node.database,
-        //        ssl: node.ssl,
-        //        max: node.max,
-        //        min: node.min,
-        //        idleTimeoutMillis: node.idle
-        //      });
-        //      poolInstance = this;
-        //    }
-        //    return poolInstance;
-        //  }
-        // }
-        // pgPool = new Pool();
     }
 
     /**
@@ -110,17 +71,19 @@ module.exports = function(RED) {
     });
 
     /**
-     * Define the postgrestor query node
+     * Define the pgquery node
      * @param {Object} config
      * @constructor
      */
-    function PostgrestorNode(config) {
+    function PgQueryNode(config) {
         const node = this;
 
+        // Create the node and set config values
         RED.nodes.createNode(node, config);
         node.topic = config.topic;
         node.config = RED.nodes.getNode(config.postgresDB);
 
+        // When the node gets an input, do the query
         node.on('input', async function(msg) {
             let client;
             try {
@@ -143,7 +106,7 @@ module.exports = function(RED) {
     }
 
     /**
-     * Register the postgrestor query node
+     * Register the pgquery node
      */
-    RED.nodes.registerType('postgrestor', PostgrestorNode);
+    RED.nodes.registerType('postgrestor', PgQueryNode);
 };
