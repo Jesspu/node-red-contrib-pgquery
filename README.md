@@ -38,7 +38,7 @@ but for now, here are some work arounds.
 ## Description
 pgQuery :space_invader: is a [**Node-RED**](http://nodered.org/) node allowing basic access to [**Postgres**](https://www.postgresql.org/) :elephant: database.
 
-Postgrestor sets up a console to execute queries against the configured database.
+pgQuery sets up a console to execute queries against the configured database.
 
 ```msg.payload``` will contain the result object of the query. It has the following properties:
 * ```command```: The sql command that was executed (e.g. "SELECT", "UPDATE", etc.)
@@ -59,7 +59,7 @@ SELECT * FROM table WHERE id = '{{ msg.id }}'
 
 ## STILL WIP, UPDATED INSTALL COMING
 #### Using the Node-RED Editor
-From version 0.15 of [**Node-RED**](http://nodered.org/) you can install [**Postgrestor**](https://github.com/Jesspu/node-red-contrib-pgquery) directly using the editor. To do this select ```Manage Palette``` from the menu (top right), and then select the ```install``` tab in the palette.
+From version 0.15 of [**Node-RED**](http://nodered.org/) you can install [**pgquery**](https://github.com/Jesspu/node-red-contrib-pgquery) directly using the editor. To do this select ```Manage Palette``` from the menu (top right), and then select the ```install``` tab in the palette.
 
 You can now search for [**pgquery**](https://github.com/Jesspu/node-red-contrib-pgquery) to install.
 
